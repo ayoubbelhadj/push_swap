@@ -6,7 +6,7 @@
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 02:50:34 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/01/20 20:45:46 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/01/22 22:08:57 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,22 @@
 typedef struct s_stack
 {
 	int				data;
+	int				pos;
 	struct s_stack	*next;
 }	t_stack;
+
+/* ---- algo ---- */
+int		get_min_elem(t_stack *stack);
+int		get_max_elem(t_stack *stack);
+int		get_index_elem(t_stack *stack, int elem);
+void	sort_three(t_stack **stack);
+void	sort_five(t_stack **stack_a, t_stack **stack_b);
+void	sort_stack(t_stack **a, t_stack **b);
+void	push_chunks(t_stack **a, t_stack **b, int chunk_size, int end_chunk);
+void	sort_and_push(t_stack **a, t_stack **b, int size);
+void	rotate_and_push(int index, int size, t_stack **a, t_stack **b);
+int		compare_top_bottom(t_stack **b, int pos, int size);
+int		get_index(t_stack *b, int num);
 
 /* ---- check ---- */
 void	get_erreur(char *msg);
@@ -54,6 +68,7 @@ t_stack	*ft_lstlast(t_stack *lst);
 t_stack	*ft_lstnew(int data);
 int		ft_lstsize(t_stack *lst);
 void	push_element(t_stack **stack_a, char **str);
+void	get_pos(t_stack *a);
 
 /* ---- Utils ---- */
 long	ft_atoi(const char *nptr);

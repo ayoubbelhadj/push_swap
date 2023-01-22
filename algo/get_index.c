@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_erreur.c                                       :+:      :+:    :+:   */
+/*   get_index.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 13:31:14 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/01/21 17:17:42 by abelhadj         ###   ########.fr       */
+/*   Created: 2023/01/22 22:10:11 by abelhadj          #+#    #+#             */
+/*   Updated: 2023/01/22 22:10:14 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	get_erreur(char *msg)
+int	get_index(t_stack *b, int num)
 {
-	ft_putstr(msg);
-	exit(EXIT_FAILURE);
+	t_stack	*tmp;
+	int		i;
+
+	tmp = b;
+	i = 0;
+	while (tmp)
+	{
+		if (tmp->pos == num)
+			return (i);
+		i++;
+		tmp = tmp->next;
+	}
+	return (-1);
 }

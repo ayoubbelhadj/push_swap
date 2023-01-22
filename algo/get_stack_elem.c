@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_erreur.c                                       :+:      :+:    :+:   */
+/*   get_stack_elem.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 13:31:14 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/01/21 17:17:42 by abelhadj         ###   ########.fr       */
+/*   Created: 2023/01/21 19:48:21 by abelhadj          #+#    #+#             */
+/*   Updated: 2023/01/21 20:00:00 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	get_erreur(char *msg)
+t_stack	*get_stack_elem(t_stack *stack, int element)
 {
-	ft_putstr(msg);
-	exit(EXIT_FAILURE);
+	t_stack	*tmp;
+
+	tmp = stack;
+	while (tmp)
+	{
+		if (tmp->data == element)
+			return (tmp);
+		tmp = tmp->next;
+	}
+	return (NULL);
 }

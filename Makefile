@@ -6,7 +6,7 @@
 #    By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/20 14:39:16 by abelhadj          #+#    #+#              #
-#    Updated: 2023/01/20 20:45:22 by abelhadj         ###   ########.fr        #
+#    Updated: 2023/01/22 22:10:52 by abelhadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,14 @@ RM		= rm -rf
 UTILS	= $(addprefix utils/, ft_atoi ft_isdigit ft_memcpy ft_memmove ft_putstr ft_split \
 				ft_strcmp ft_strdup ft_strjoin ft_strlen)
 STACK	= $(addprefix stack/, build free_stack ft_lstadd_front ft_lstlast \
-				ft_lstnew ft_lstsize push_element)
+				ft_lstnew ft_lstsize push_element get_pos)
 CHECK	= $(addprefix check/, get_erreur is_duple is_integer is_out_of_range is_sorted \
 				util)
 RULES	= $(addprefix rules/, sa sb ss pa pb ra rb rr rra rrb rrr)
-FILES	= $(NAME) $(UTILS) $(CHECK) $(STACK) $(RULES)
+
+ALGO	= $(addprefix algo/, get_min_elem get_max_elem get_index_elem sort_three\
+			get_index sort_five get_stack_elem sort_stack)
+FILES	= $(NAME) $(UTILS) $(CHECK) $(STACK) $(RULES) $(ALGO)
 
 SRC		= $(FILES:=.c)
 OBJ		= $(FILES:=.o)

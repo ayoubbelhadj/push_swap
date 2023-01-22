@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_erreur.c                                       :+:      :+:    :+:   */
+/*   get_min_elem.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 13:31:14 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/01/21 17:17:42 by abelhadj         ###   ########.fr       */
+/*   Created: 2023/01/21 13:24:18 by abelhadj          #+#    #+#             */
+/*   Updated: 2023/01/21 13:29:23 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	get_erreur(char *msg)
+int	get_min_elem(t_stack *stack)
 {
-	ft_putstr(msg);
-	exit(EXIT_FAILURE);
+	t_stack	*tmp;
+	int		min;
+
+	tmp = stack;
+	min = stack->data;
+	while (tmp)
+	{
+		if (tmp->data < min)
+			min = tmp->data;
+		tmp = tmp->next;
+	}
+	return (min);
 }

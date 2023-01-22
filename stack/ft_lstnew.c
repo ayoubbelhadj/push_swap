@@ -6,7 +6,7 @@
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 11:10:50 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/01/20 16:36:31 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/01/22 17:36:37 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_stack	*ft_lstnew(int data)
 	if (!head)
 		return (NULL);
 	head -> data = data;
+	head -> pos = 0;
 	head -> next = NULL;
 	return (head);
 }
