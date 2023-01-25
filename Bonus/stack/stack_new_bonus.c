@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   build.c                                            :+:      :+:    :+:   */
+/*   stack_new_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 13:34:25 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/01/25 21:03:12 by abelhadj         ###   ########.fr       */
+/*   Created: 2022/10/17 11:10:50 by abelhadj          #+#    #+#             */
+/*   Updated: 2023/01/25 18:29:41 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../include/checker_bonus.h"
 
-char	**build(char **av, int size)
+t_stack	*stack_new_bonus(int data)
 {
-	int		i;
-	char	*s;
-	char	*tmp;
-	char	**str;
+	t_stack	*head;
 
-	i = 0;
-	s = ft_strdup("");
-	while (i < size)
-	{
-		tmp = ft_strjoin(s, av[i]);
-		free(s);
-		s = tmp;
-		tmp = ft_strjoin(s, " ");
-		free(s);
-		s = tmp;
-		i++;
-	}
-	str = ft_split(s, ' ');
-	free(s);
-	return (str);
+	head = NULL;
+	head = malloc(sizeof(t_stack));
+	if (!head)
+		return (NULL);
+	head -> data = data;
+	head -> next = NULL;
+	return (head);
 }

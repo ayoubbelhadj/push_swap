@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   build.c                                            :+:      :+:    :+:   */
+/*   is_out_of_range_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 13:34:25 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/01/25 21:03:12 by abelhadj         ###   ########.fr       */
+/*   Created: 2023/01/20 16:02:06 by abelhadj          #+#    #+#             */
+/*   Updated: 2023/01/25 18:26:51 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../include/checker_bonus.h"
 
-char	**build(char **av, int size)
+static int	out_range(char *nbr)
 {
-	int		i;
-	char	*s;
-	char	*tmp;
-	char	**str;
+	return (ft_atoi_bonus(nbr) < INT_MIN || ft_atoi_bonus(nbr) > INT_MAX);
+}
+
+int	is_out_of_range_bonus(char **av, int size)
+{
+	int	i;
 
 	i = 0;
-	s = ft_strdup("");
 	while (i < size)
 	{
-		tmp = ft_strjoin(s, av[i]);
-		free(s);
-		s = tmp;
-		tmp = ft_strjoin(s, " ");
-		free(s);
-		s = tmp;
+		if (out_range(av[i]))
+			return (1);
 		i++;
 	}
-	str = ft_split(s, ' ');
-	free(s);
-	return (str);
+	return (0);
 }

@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   build.c                                            :+:      :+:    :+:   */
+/*   pb_bonus.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 13:34:25 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/01/25 21:03:12 by abelhadj         ###   ########.fr       */
+/*   Created: 2023/01/20 19:01:22 by abelhadj          #+#    #+#             */
+/*   Updated: 2023/01/25 16:51:38 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../include/checker_bonus.h"
 
-char	**build(char **av, int size)
+void	pb_bonus(t_stack **stack_a, t_stack **stack_b)
 {
-	int		i;
-	char	*s;
-	char	*tmp;
-	char	**str;
+	t_stack	*temp;
 
-	i = 0;
-	s = ft_strdup("");
-	while (i < size)
-	{
-		tmp = ft_strjoin(s, av[i]);
-		free(s);
-		s = tmp;
-		tmp = ft_strjoin(s, " ");
-		free(s);
-		s = tmp;
-		i++;
-	}
-	str = ft_split(s, ' ');
-	free(s);
-	return (str);
+	if (!stack_a || !(*stack_a))
+		return ;
+	temp = *stack_a;
+	*stack_a = (*stack_a)->next;
+	temp->next = *stack_b;
+	*stack_b = temp;
 }

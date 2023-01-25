@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   build.c                                            :+:      :+:    :+:   */
+/*   is_duple_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 13:34:25 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/01/25 21:03:12 by abelhadj         ###   ########.fr       */
+/*   Created: 2023/01/19 03:24:23 by abelhadj          #+#    #+#             */
+/*   Updated: 2023/01/25 18:26:37 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../include/checker_bonus.h"
 
-char	**build(char **av, int size)
+int	is_duple_bonus(char **av, int size)
 {
-	int		i;
-	char	*s;
-	char	*tmp;
-	char	**str;
+	int	i;
+	int	j;
 
 	i = 0;
-	s = ft_strdup("");
 	while (i < size)
 	{
-		tmp = ft_strjoin(s, av[i]);
-		free(s);
-		s = tmp;
-		tmp = ft_strjoin(s, " ");
-		free(s);
-		s = tmp;
+		j = i + 1;
+		while (j < size)
+		{
+			if (ft_strcmp_bonus(av[i], av[j]) == 0)
+				return (1);
+			j++;
+		}
 		i++;
 	}
-	str = ft_split(s, ' ');
-	free(s);
-	return (str);
+	return (0);
 }

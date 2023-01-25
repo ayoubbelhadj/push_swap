@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   build.c                                            :+:      :+:    :+:   */
+/*   stack_size.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 13:34:25 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/01/25 21:03:12 by abelhadj         ###   ########.fr       */
+/*   Created: 2022/10/18 18:25:23 by abelhadj          #+#    #+#             */
+/*   Updated: 2023/01/25 18:01:58 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../include/checker_bonus.h"
 
-char	**build(char **av, int size)
+int	stack_size_bonus(t_stack *lst)
 {
-	int		i;
-	char	*s;
-	char	*tmp;
-	char	**str;
+	int	i;
 
 	i = 0;
-	s = ft_strdup("");
-	while (i < size)
+	while (lst)
 	{
-		tmp = ft_strjoin(s, av[i]);
-		free(s);
-		s = tmp;
-		tmp = ft_strjoin(s, " ");
-		free(s);
-		s = tmp;
+		lst = lst -> next;
 		i++;
 	}
-	str = ft_split(s, ' ');
-	free(s);
-	return (str);
+	return (i);
 }

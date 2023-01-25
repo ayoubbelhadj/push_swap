@@ -1,37 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   build.c                                            :+:      :+:    :+:   */
+/*   ft_strjoin_gnl.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 13:34:25 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/01/25 21:03:12 by abelhadj         ###   ########.fr       */
+/*   Created: 2023/01/25 15:59:05 by abelhadj          #+#    #+#             */
+/*   Updated: 2023/01/25 18:19:46 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../include/checker_bonus.h"
 
-char	**build(char **av, int size)
+char	*ft_strjoin_gnl(char *s1, char *s2)
 {
-	int		i;
-	char	*s;
-	char	*tmp;
-	char	**str;
+	size_t		i;
+	size_t		j;
+	char		*str;
 
-	i = 0;
-	s = ft_strdup("");
-	while (i < size)
+	if (!s1)
 	{
-		tmp = ft_strjoin(s, av[i]);
-		free(s);
-		s = tmp;
-		tmp = ft_strjoin(s, " ");
-		free(s);
-		s = tmp;
-		i++;
+		s1 = malloc(1);
+		if (!s1)
+			return (NULL);
+		s1[0] = 0;
 	}
-	str = ft_split(s, ' ');
-	free(s);
+	if (!s2)
+		return (NULL);
+	str = malloc(ft_strlen_bonus(s1) + ft_strlen_bonus(s2) + 1);
+	if (!str)
+		return (NULL);
+	i = -1;
+	while (s1[++i])
+		str[i] = s1[i];
+	j = -1;
+	while (s2[++j])
+		str[i++] = s2[j];
+	str[i] = '\0';
+	free (s1);
 	return (str);
 }

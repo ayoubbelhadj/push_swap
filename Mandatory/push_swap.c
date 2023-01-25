@@ -6,7 +6,7 @@
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 11:57:17 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/01/25 13:37:40 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/01/25 20:41:48 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int ac, char **av)
 	stack_b = NULL;
 	if (ac == 1)
 		exit (EXIT_FAILURE);
+	is_empty(ac, av);
 	str = build(av + 1, ac - 1);
 	push_element(&stack_a, str);
 	get_pos(stack_a);
@@ -31,13 +32,5 @@ int	main(int ac, char **av)
 		sort_five(&stack_a, &stack_b);
 	else
 		sort_stack(&stack_a, &stack_b);
-	// printf("-a-\n");
-	// t_stack	*c;
-	// c = stack_a;
-	// while (c != NULL)
-	// {
-	// 	printf("%d\n", c->data);
-	// 	c = c->next;
-	// }
 	exit (EXIT_SUCCESS);
 }

@@ -1,37 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   build.c                                            :+:      :+:    :+:   */
+/*   util_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 13:34:25 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/01/25 21:03:12 by abelhadj         ###   ########.fr       */
+/*   Created: 2023/01/19 02:54:33 by abelhadj          #+#    #+#             */
+/*   Updated: 2023/01/25 18:26:59 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../include/checker_bonus.h"
 
-char	**build(char **av, int size)
+int	is_digital_bonus(char **str)
 {
-	int		i;
-	char	*s;
-	char	*tmp;
-	char	**str;
+	int	i;
+	int	j;
 
 	i = 0;
-	s = ft_strdup("");
-	while (i < size)
+	j = 0;
+	while (str[i])
 	{
-		tmp = ft_strjoin(s, av[i]);
-		free(s);
-		s = tmp;
-		tmp = ft_strjoin(s, " ");
-		free(s);
-		s = tmp;
+		while (str[i][j])
+		{
+			if (!ft_isdigit_bonus(str[i][j]))
+				return (0);
+			j++;
+		}
 		i++;
 	}
-	str = ft_split(s, ' ');
-	free(s);
-	return (str);
+	return (1);
+}
+
+int	get_size_bonus(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

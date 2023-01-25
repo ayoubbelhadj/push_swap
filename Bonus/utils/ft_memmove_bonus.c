@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   build.c                                            :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 13:34:25 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/01/25 21:03:12 by abelhadj         ###   ########.fr       */
+/*   Created: 2022/10/08 00:44:07 by abelhadj          #+#    #+#             */
+/*   Updated: 2023/01/25 18:18:49 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../include/checker_bonus.h"
 
-char	**build(char **av, int size)
+void	*ft_memmove_bonus(void *dest, const void *src, size_t n)
 {
-	int		i;
-	char	*s;
-	char	*tmp;
-	char	**str;
+	unsigned char	*d;
+	unsigned char	*s;
 
-	i = 0;
-	s = ft_strdup("");
-	while (i < size)
+	if (!dest && !src)
+		return (NULL);
+	d = (unsigned char *)dest;
+	s = (unsigned char *)src;
+	if (d > s)
 	{
-		tmp = ft_strjoin(s, av[i]);
-		free(s);
-		s = tmp;
-		tmp = ft_strjoin(s, " ");
-		free(s);
-		s = tmp;
-		i++;
+		while (n-- > 0)
+			d[n] = s[n];
 	}
-	str = ft_split(s, ' ');
-	free(s);
-	return (str);
+	else
+		ft_memcpy_bonus(dest, src, n);
+	return (dest);
 }

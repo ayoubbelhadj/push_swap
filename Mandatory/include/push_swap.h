@@ -6,7 +6,7 @@
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 02:50:34 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/01/25 15:21:12 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/01/25 20:24:58 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct s_stack
 	int				pos;
 	struct s_stack	*next;
 }	t_stack;
-
 
 /* ---- algo ---- */
 int		get_min_elem(t_stack *stack);
@@ -48,10 +47,12 @@ int		is_out_of_range(char **av, int size);
 int		is_sorted(t_stack *stack);
 int		is_digital(char **str);
 int		get_size(char **str);
+void	is_empty(int ac, char **av);
 
 /* ---- rules ---- */
 void	sa(t_stack **stack, int flag);
 void	sb(t_stack **stack, int flag);
+void	ss(t_stack **stack_a, t_stack **stack_b);
 void	pa(t_stack **stack_a, t_stack **stack_b);
 void	pb(t_stack **stack_a, t_stack **stack_b);
 void	ra(t_stack **stack, int flag);

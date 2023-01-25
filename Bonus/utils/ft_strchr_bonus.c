@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   build.c                                            :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 13:34:25 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/01/25 21:03:12 by abelhadj         ###   ########.fr       */
+/*   Created: 2023/01/25 15:55:45 by abelhadj          #+#    #+#             */
+/*   Updated: 2023/01/25 18:19:23 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../include/checker_bonus.h"
 
-char	**build(char **av, int size)
+char	*ft_strchr_bonus(char *s, int c)
 {
-	int		i;
-	char	*s;
-	char	*tmp;
-	char	**str;
-
-	i = 0;
-	s = ft_strdup("");
-	while (i < size)
+	if (!s)
+		return (NULL);
+	while (*s)
 	{
-		tmp = ft_strjoin(s, av[i]);
-		free(s);
-		s = tmp;
-		tmp = ft_strjoin(s, " ");
-		free(s);
-		s = tmp;
-		i++;
+		if (*s == (char)c)
+			return (s);
+		s++;
 	}
-	str = ft_split(s, ' ');
-	free(s);
-	return (str);
+	if (*s == (char)c)
+		return (s);
+	return (NULL);
 }

@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   build.c                                            :+:      :+:    :+:   */
+/*   push_element_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 13:34:25 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/01/25 21:03:12 by abelhadj         ###   ########.fr       */
+/*   Created: 2023/01/20 13:32:19 by abelhadj          #+#    #+#             */
+/*   Updated: 2023/01/25 19:55:02 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../include/checker_bonus.h"
 
-char	**build(char **av, int size)
+void	push_element_bonus(t_stack **stack_a, char **str)
 {
-	int		i;
-	char	*s;
-	char	*tmp;
-	char	**str;
+	int	size;
 
-	i = 0;
-	s = ft_strdup("");
-	while (i < size)
-	{
-		tmp = ft_strjoin(s, av[i]);
-		free(s);
-		s = tmp;
-		tmp = ft_strjoin(s, " ");
-		free(s);
-		s = tmp;
-		i++;
-	}
-	str = ft_split(s, ' ');
-	free(s);
-	return (str);
+	size = get_size_bonus(str);
+	if (!is_integer_bonus(str, size) || is_duple_bonus(str, size)
+		|| is_out_of_range_bonus(str, size))
+		get_erreur_bonus();
+	while (size)
+		stack_add_front_bonus(stack_a,
+			stack_new_bonus(ft_atoi_bonus(str[--size])));
 }

@@ -1,37 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   build.c                                            :+:      :+:    :+:   */
+/*   is_integer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 13:34:25 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/01/25 21:03:12 by abelhadj         ###   ########.fr       */
+/*   Created: 2023/01/19 03:10:24 by abelhadj          #+#    #+#             */
+/*   Updated: 2023/01/25 18:09:38 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../include/checker_bonus.h"
 
-char	**build(char **av, int size)
+static	int	is_digit(int c)
 {
-	int		i;
-	char	*s;
-	char	*tmp;
-	char	**str;
+	return (c >= '0' && c <= '9');
+}
+
+static	int	is_int(char *arg)
+{
+	int	i;
+
+	i = -1;
+	if (arg[0] == '-' || arg[0] == '+')
+		i++;
+	while (arg[++i])
+		if (!is_digit(arg[i]))
+			return (0);
+	return (1);
+}
+
+int	is_integer_bonus(char **str, int size)
+{
+	int	i;
 
 	i = 0;
-	s = ft_strdup("");
 	while (i < size)
 	{
-		tmp = ft_strjoin(s, av[i]);
-		free(s);
-		s = tmp;
-		tmp = ft_strjoin(s, " ");
-		free(s);
-		s = tmp;
+		if (!is_int(str[i]) || str[i][0] == '\0')
+			return (0);
 		i++;
 	}
-	str = ft_split(s, ' ');
-	free(s);
-	return (str);
+	return (1);
 }

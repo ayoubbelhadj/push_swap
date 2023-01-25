@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   build.c                                            :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 13:34:25 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/01/25 21:03:12 by abelhadj         ###   ########.fr       */
+/*   Created: 2022/10/10 17:35:24 by abelhadj          #+#    #+#             */
+/*   Updated: 2023/01/25 18:20:06 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../include/checker_bonus.h"
 
-char	**build(char **av, int size)
+char	*ft_strjoin_bonus(char const *s1, char const *s2)
 {
-	int		i;
-	char	*s;
-	char	*tmp;
-	char	**str;
+	char	*str;
+	int		len;
 
-	i = 0;
-	s = ft_strdup("");
-	while (i < size)
-	{
-		tmp = ft_strjoin(s, av[i]);
-		free(s);
-		s = tmp;
-		tmp = ft_strjoin(s, " ");
-		free(s);
-		s = tmp;
-		i++;
-	}
-	str = ft_split(s, ' ');
-	free(s);
+	if (!s1 || !s2)
+		return (0);
+	len = ft_strlen_bonus(s1) + ft_strlen_bonus(s2);
+	str = (char *)malloc(len + 1);
+	if (!str)
+		return (NULL);
+	ft_memcpy_bonus(str, s1, ft_strlen_bonus(s1));
+	ft_memcpy_bonus(str + ft_strlen_bonus(s1), s2, ft_strlen_bonus(s2));
+	str[len] = '\0';
 	return (str);
 }
