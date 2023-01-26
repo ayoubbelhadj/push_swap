@@ -12,7 +12,7 @@
 
 #include "../include/push_swap.h"
 
-int	compare_top_bottom(t_stack **b, int pos, int size)
+int	top_bottom_pos(t_stack **b, int pos, int size)
 {
 	int	top;
 	int	bottom;
@@ -25,7 +25,7 @@ int	compare_top_bottom(t_stack **b, int pos, int size)
 		return (top);
 }
 
-void	rotate_and_push(int index, int size, t_stack **a, t_stack **b)
+void	rotate_push2a(t_stack **a, t_stack **b, int index, int size)
 {
 	int	i;
 
@@ -41,36 +41,36 @@ void	rotate_and_push(int index, int size, t_stack **a, t_stack **b)
 	pa(a, b);
 }
 
-void	sort_and_push(t_stack **a, t_stack **b, int size)
+void	sort_push2a(t_stack **a, t_stack **b, int size)
 {
 	int	index;
 
 	index = 0;
 	while (*b)
 	{
-		if (size == 1 || compare_top_bottom(b, size, size)
-			<= compare_top_bottom(b, size - 1, size))
+		if (size != 1 && top_bottom_pos(b, size, size)
+			> top_bottom_pos(b, size - 1, size))
 		{
+			index = get_index(*b, (size - 2));
+			rotate_push2a(a, b, index, size);
 			index = get_index(*b, (size - 1));
-			rotate_and_push(index, size, a, b);
-			size--;
+			size --;
+			rotate_push2a(a, b, index, size);
+			size --;
+			sa(a, 1);
 		}
 		else
 		{
-			index = get_index(*b, (size - 2));
-			rotate_and_push(index, size, a, b);
 			index = get_index(*b, (size - 1));
-			size --;
-			rotate_and_push(index, size, a, b);
-			size --;
-			sa(a, 1);
+			rotate_push2a(a, b, index, size);
+			size--;
 		}
 	}
 }
 
-void	push_chunks(t_stack **a, t_stack **b, int chunk_size, int end_chunk)
+void	push2b(t_stack **a, t_stack **b, int chunk_size, int thechunk)
 {
-	int	chunk_count;		
+	int	chunk_count;
 
 	chunk_count = 0;
 	while (*a)
@@ -81,7 +81,7 @@ void	push_chunks(t_stack **a, t_stack **b, int chunk_size, int end_chunk)
 			{
 				pb(a, b);
 				chunk_count++;
-				if ((*b)->pos > (chunk_size - (end_chunk / 2)))
+				if ((*b)->pos > (chunk_size - (thechunk / 2)))
 				{
 					if ((*a) && (*a)->pos >= chunk_size
 						&& chunk_count != chunk_size)
@@ -93,14 +93,14 @@ void	push_chunks(t_stack **a, t_stack **b, int chunk_size, int end_chunk)
 			else
 				ra(a, 1);
 		}
-		chunk_size += end_chunk;
+		chunk_size += thechunk;
 	}
 }
 
 void	sort_stack(t_stack **a, t_stack **b)
 {
 	int	chunk_size;
-	int	end_chunk;		
+	int	thechunk;		
 	int	size;
 
 	size = stack_size(*a);
@@ -108,7 +108,7 @@ void	sort_stack(t_stack **a, t_stack **b)
 		chunk_size = size / 5;
 	if (size > 200)
 		chunk_size = size / 9;
-	end_chunk = chunk_size;
-	push_chunks(a, b, chunk_size, end_chunk);
-	sort_and_push(a, b, size);
+	thechunk = chunk_size;
+	push2b(a, b, chunk_size, thechunk);
+	sort_push2a(a, b, size);
 }

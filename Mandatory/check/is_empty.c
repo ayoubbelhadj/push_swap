@@ -6,7 +6,7 @@
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 19:39:57 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/01/25 19:48:51 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/01/26 15:56:34 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	is_empty(int ac, char **av)
 		while (ft_isspace(av[i][j]))
 			j++;
 		if (av[i][j] == 0)
-			get_erreur("Error\n");
+			get_erreur();
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 13:31:14 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/01/25 18:26:21 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/01/26 15:57:11 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	get_erreur_bonus(void)
 {
-	ft_putstr_bonus("Error\n");
+	write(2, "Error\n", 6);
 	exit(EXIT_FAILURE);
 }

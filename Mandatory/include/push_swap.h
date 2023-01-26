@@ -6,7 +6,7 @@
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 02:50:34 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/01/25 20:24:58 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/01/26 19:50:32 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ int		get_index_elem(t_stack *stack, int elem);
 void	sort_three(t_stack **stack);
 void	sort_five(t_stack **stack_a, t_stack **stack_b);
 void	sort_stack(t_stack **a, t_stack **b);
-void	push_chunks(t_stack **a, t_stack **b, int chunk_size, int end_chunk);
-void	sort_and_push(t_stack **a, t_stack **b, int size);
-void	rotate_and_push(int index, int size, t_stack **a, t_stack **b);
-int		compare_top_bottom(t_stack **b, int pos, int size);
+void	push2b(t_stack **a, t_stack **b, int chunk_size, int end_chunk);
+void	sort_push2a(t_stack **a, t_stack **b, int size);
+void	rotate_push2a(t_stack **a, t_stack **b, int index, int size);
+int		top_bottom_pos(t_stack **b, int pos, int size);
 int		get_index(t_stack *b, int num);
 
 /* ---- check ---- */
-void	get_erreur(char *msg);
+void	get_erreur(void);
 int		is_duple(char **av, int size);
 int		is_integer(char **str, int size);
 int		is_out_of_range(char **av, int size);

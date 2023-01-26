@@ -6,7 +6,7 @@
 /*   By: abelhadj <abelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 03:10:24 by abelhadj          #+#    #+#             */
-/*   Updated: 2023/01/20 16:36:31 by abelhadj         ###   ########.fr       */
+/*   Updated: 2023/01/26 15:50:37 by abelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static	int	is_int(char *arg)
 	int	i;
 
 	i = -1;
-	if (arg[0] == '-' || arg[0] == '+')
+	if ((arg[0] == '-' || arg[0] == '+') && is_digit(arg[1]))
 		i++;
 	while (arg[++i])
 		if (!is_digit(arg[i]))
